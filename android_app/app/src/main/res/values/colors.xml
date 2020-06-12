@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="yellow">#FAD00D</color>
+    <color name="yellow_dark">#C29F00</color>
+
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="beige">#FFEEE9</color>
+    <color name="beige_dark">#CCBCB7</color>
+
+    <color name="brown">#4F4139</color>
+    <color name="brown_dark">#261A13</color>
+
+    <color name="indigo">#112D4E</color>
+
+</resources>
