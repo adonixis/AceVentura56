@@ -20,6 +20,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.AceVentura56.Launcher">
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryDark">@color/yellow_dark</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
     <style name="Theme.AceVentura56.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
     <style name="Theme.AceVentura56.PopupOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
