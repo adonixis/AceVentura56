@@ -13,6 +13,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/aileron_semibold</item>
+        <item name="fontFamily">@font/aileron_semibold</item>
     </style>
 
     <style name="Theme.AceVentura56.NoActionBar">
