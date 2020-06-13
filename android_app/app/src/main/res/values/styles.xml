@@ -4,7 +4,7 @@
 
     <style name="Theme.AceVentura56.Button.Auth" parent="Theme.AceVentura56.Button">
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
-        <item name="android:fontFamily">@font/aileron_semibold</item>
+        <item name="android:fontFamily">@font/product_sans_bold</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
         <item name="android:textAllCaps">false</item>
@@ -22,7 +22,7 @@
 
     <style name="Theme.AceVentura56.Button.Yellow" parent="Theme.AceVentura56.Button">
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
-        <item name="android:fontFamily">@font/aileron_semibold</item>
+        <item name="android:fontFamily">@font/product_sans_bold</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
         <item name="android:textColor">@color/indigo</item>

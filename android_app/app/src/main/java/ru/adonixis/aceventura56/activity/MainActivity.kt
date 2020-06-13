@@ -5,24 +5,22 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.yandex.mapkit.MapKitFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.content_main.view.*
 import ru.adonixis.aceventura56.R
 
 
@@ -54,8 +52,6 @@ class MainActivity : AppCompatActivity() {
             setTheme(R.style.Theme_AceVentura56_NoActionBar)
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
-            val toolbar: Toolbar = findViewById(R.id.toolbar)
-            setSupportActionBar(toolbar)
 
             val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             val navView: NavigationView = findViewById(R.id.navView)
@@ -67,8 +63,8 @@ class MainActivity : AppCompatActivity() {
                     R.id.nav_donate
                 ), drawerLayout
             )
-            setupActionBarWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
+            contentMain.ivHamburger.setOnClickListener{ drawerLayout.openDrawer(Gravity.START); }
 
             settings = PreferenceManager.getDefaultSharedPreferences(this)
             editor = settings.edit()
