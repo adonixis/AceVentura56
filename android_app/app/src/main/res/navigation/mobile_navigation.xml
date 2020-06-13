@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_adopt">
-
-    <fragment
-        android:id="@+id/nav_adopt"
-        android:name="ru.adonixis.aceventura56.fragment.AdoptFragment"
-        android:label="@string/menu_adopt"
-        tools:layout="@layout/fragment__adopt" />
+    app:startDestination="@+id/nav_report">
 
     <fragment
         android:id="@+id/nav_report"
         android:name="ru.adonixis.aceventura56.fragment.ReportFragment"
         android:label="@string/menu_report"
         tools:layout="@layout/fragment_report" />
+
+    <fragment
+        android:id="@+id/nav_adopt"
+        android:name="ru.adonixis.aceventura56.fragment.AdoptFragment"
+        android:label="@string/menu_adopt"
+        tools:layout="@layout/fragment__adopt" />
 
     <fragment
         android:id="@+id/nav_donate"

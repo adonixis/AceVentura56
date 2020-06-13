@@ -15,9 +15,14 @@
     <string name="btn_logout">Выйти</string>
     <string name="btn_google">Войти через Google</string>
     <string name="btn_facebook">Войти через Facebook</string>
+    <string name="btn_send">Отправить сведения</string>
 
     <string name="text_onboarding_title">Ace Ventura 56</string>
     <string name="text_onboarding">Сервис сопровождения мероприятий по работе с бездомными животными</string>
+
+    <string name="text_take_photo">Сделать фото</string>
+    <string name="text_gallery">Выбрать из галереи</string>
+    <string name="text_geo_position">Прикрепить геопозицию</string>
 
     <string name="facebook_application_id" translatable="false">634445780489221</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb634445780489221</string>

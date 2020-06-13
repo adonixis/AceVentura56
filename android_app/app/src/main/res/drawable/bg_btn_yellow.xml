@@ -4,10 +4,10 @@
     <item>
         <shape>
             <corners
-                android:radius="8dp"
+                android:radius="12dp"
                 />
             <solid
-                android:color="@color/facebook_blue"/>
+                android:color="@color/yellow"/>
         </shape>
     </item>
 </ripple>

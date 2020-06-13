@@ -16,11 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.Scopes
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -56,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
         LoginManager.getInstance().registerCallback(callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(loginResult: LoginResult) {
-                    //onLoginFacebook(loginResult.accessToken.token)
                     onLoginFacebook(loginResult.accessToken)
                 }
 
@@ -122,7 +118,7 @@ class LoginActivity : AppCompatActivity() {
         LoginManager.getInstance().logOut()
     }
 
-    fun onLoginGoogle(token: String) {
+    private fun onLoginGoogle(token: String) {
         btnLogInGoogle.isEnabled = false
         firebaseAuthWithGoogle(token)
     }
