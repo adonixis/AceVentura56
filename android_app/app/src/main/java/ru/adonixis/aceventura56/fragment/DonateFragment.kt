@@ -1,4 +1,4 @@
-package ru.adonixis.aceventura56.ui.donate
+package ru.adonixis.aceventura56.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ru.adonixis.aceventura56.R
+import ru.adonixis.aceventura56.viewmodel.DonateViewModel
 
 class DonateFragment : Fragment() {
 

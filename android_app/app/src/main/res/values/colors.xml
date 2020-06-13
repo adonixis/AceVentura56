@@ -17,4 +17,7 @@
 
     <color name="indigo">#112D4E</color>
 
+    <color name="google_red">#CE5658</color>
+    <color name="facebook_blue">#647DAF</color>
+
 </resources>

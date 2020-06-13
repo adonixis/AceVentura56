@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_adopt"
-        android:name="ru.adonixis.aceventura56.ui.adopt.AdoptFragment"
+        android:name="ru.adonixis.aceventura56.fragment.AdoptFragment"
         android:label="@string/menu_adopt"
         tools:layout="@layout/fragment__adopt" />
 
     <fragment
         android:id="@+id/nav_report"
-        android:name="ru.adonixis.aceventura56.ui.report.ReportFragment"
+        android:name="ru.adonixis.aceventura56.fragment.ReportFragment"
         android:label="@string/menu_report"
         tools:layout="@layout/fragment_report" />
 
     <fragment
         android:id="@+id/nav_donate"
-        android:name="ru.adonixis.aceventura56.ui.donate.DonateFragment"
+        android:name="ru.adonixis.aceventura56.fragment.DonateFragment"
         android:label="@string/menu_donate"
         tools:layout="@layout/fragment_donate" />
 </navigation>

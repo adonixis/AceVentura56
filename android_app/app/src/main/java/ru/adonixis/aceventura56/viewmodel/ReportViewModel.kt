@@ -1,4 +1,4 @@
-package ru.adonixis.aceventura56.ui.report
+package ru.adonixis.aceventura56.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
