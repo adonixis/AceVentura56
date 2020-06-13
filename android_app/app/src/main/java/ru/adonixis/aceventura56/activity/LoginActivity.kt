@@ -20,9 +20,11 @@ import com.google.android.gms.common.Scopes
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
@@ -42,9 +44,9 @@ class LoginActivity : AppCompatActivity() {
         private const val NAME = "name"
         private const val PHOTO_URL = "photoUrl"
     }
-    var callbackManager: CallbackManager? = null
-    private var mGoogleSignInClient: GoogleSignInClient? = null
+    private lateinit var callbackManager: CallbackManager
     private lateinit var auth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,12 +67,18 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+/*        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestScopes(Scope(Scopes.EMAIL), Scope(Scopes.PROFILE))
             .requestEmail()
-            //.requestIdToken(getString(R.string.google_client_id))
+            .requestIdToken(getString(R.string.google_client_id))
+            .build()*/
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
             .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         auth = Firebase.auth
 
@@ -86,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
                 handleGoogleSignInResult(task)
             }
         }
-        callbackManager!!.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun startMainActivity() {
@@ -104,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun logInGoogle() {
-        val signInIntent = mGoogleSignInClient?.signInIntent
+        val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, REQUEST_GOOGLE_AUTH)
     }
 
@@ -114,10 +122,15 @@ class LoginActivity : AppCompatActivity() {
         LoginManager.getInstance().logOut()
     }
 
-    private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>?) = GlobalScope.launch(
-        Dispatchers.IO) {
+    fun onLoginGoogle(token: String) {
+        btnLogInGoogle.isEnabled = false
+        firebaseAuthWithGoogle(token)
+    }
+
+    private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>?) = GlobalScope.launch(Dispatchers.IO) {
         try {
             val account = completedTask!!.getResult(ApiException::class.java)
+            Log.d(TAG, "firebaseAuthWithGoogle:" + account!!.id)
             val idToken = account!!.idToken
             withContext(Dispatchers.Main) {
                 onLoginGoogle(idToken!!)
@@ -127,10 +140,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleFacebookAccessToken(token: AccessToken) {
-        Log.d(TAG, "handleFacebookAccessToken:$token")
-
-        val credential = FacebookAuthProvider.getCredential(token.token)
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -148,8 +159,24 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    fun onLoginGoogle(token: String) {
-        btnLogInGoogle.isEnabled = false
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        Log.d(TAG, "handleFacebookAccessToken:$token")
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    val user = auth.currentUser
+                    //updateUI(user)
+                    onAuthSuccess(user!!)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    //updateUI(null)
+                }
+            }
     }
 
     fun onAuthFailed(errorMessage: String) {

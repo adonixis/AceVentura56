@@ -21,4 +21,5 @@
 
     <string name="facebook_application_id" translatable="false">634445780489221</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb634445780489221</string>
+    <string name="google_client_id" translatable="false">37415298559-lkglh5leceu4p6dhtvbvh26h3gnk40ak.apps.googleusercontent.com</string>
 </resources>
