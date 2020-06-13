@@ -183,28 +183,6 @@ class ReportFragment : Fragment() {
             progressDialog!!.show()
 
             val imageRef = imagesPetsRef.child(UUID.randomUUID().toString() + "-" + System.currentTimeMillis() + ".jpg")
-
-            // adding listeners on upload
-            // or failure of image
-/*            ref.putFile(filePath!!)
-                    .addOnSuccessListener { // Image uploaded successfully
-                        // Dismiss dialog
-                        progressDialog.dismiss()
-                        Toast.makeText(activity, "Image Uploaded!", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener { e -> // Error, Image not uploaded
-                        progressDialog.dismiss()
-                        Toast.makeText(activity, "Failed " + e.message, Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnProgressListener { taskSnapshot ->
-                        // Progress Listener for loading
-                        // percentage on the dialog box
-                        val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
-                        progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
-                    }*/
-
-
-
             val uploadTask = imageRef.putFile(filePath!!)
 
             val urlTask: Task<Uri?> = uploadTask.continueWithTask { task ->
@@ -241,7 +219,11 @@ class ReportFragment : Fragment() {
                 "userEmail" to userEmail,
                 "userName" to userName,
                 "userId" to userId,
-                "status" to "Administration"
+                "status" to "Administration",
+                "petName" to "Шарик",
+                "petSex" to "Male",
+                "petAge" to "4 года",
+                "petBreed" to "Дворняжка"
         )
 
         remoteDB.collection("petRequests")
