@@ -16,6 +16,7 @@
     <string name="btn_google">Войти через Google</string>
     <string name="btn_facebook">Войти через Facebook</string>
     <string name="btn_send">Отправить сведения</string>
+    <string name="btn_here">Здесь</string>
 
     <string name="text_onboarding_title">Ace Ventura 56</string>
     <string name="text_onboarding">Сервис сопровождения мероприятий по работе с бездомными животными</string>
@@ -27,4 +28,5 @@
     <string name="facebook_application_id" translatable="false">634445780489221</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb634445780489221</string>
     <string name="google_client_id" translatable="false">37415298559-lkglh5leceu4p6dhtvbvh26h3gnk40ak.apps.googleusercontent.com</string>
+    <string name="yandex_maps_api_key" translatable="false">8b4e3f58-4318-4711-9de4-3e99d4311ee9</string>
 </resources>

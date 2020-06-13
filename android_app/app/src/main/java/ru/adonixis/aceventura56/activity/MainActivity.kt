@@ -20,6 +20,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.yandex.mapkit.MapKitFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import ru.adonixis.aceventura56.R
@@ -44,7 +45,6 @@ class MainActivity : AppCompatActivity() {
     private var photoUrl: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         if (needLogin()) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

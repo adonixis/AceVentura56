@@ -15,6 +15,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_report.*
 import ru.adonixis.aceventura56.R
+import ru.adonixis.aceventura56.activity.MapActivity
 import java.io.File
 import java.io.IOException
 
@@ -22,6 +23,7 @@ class ReportFragment : Fragment() {
     companion object {
         private const val REQUEST_TAKE_PHOTO = 1
         private const val REQUEST_PICK_IMAGE = 2
+        private const val REQUEST_GEO_POSITION = 3
         private const val CAPTURE_IMAGE_FILE_PROVIDER = "ru.adonixis.aceventura56.fileprovider"
     }
 
@@ -29,6 +31,8 @@ class ReportFragment : Fragment() {
     private var chosenPictureBitmap: Bitmap? = null
     private var isPhotoExist = false
     private var isGeoPositionExist = false
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_report, container, false)
@@ -79,7 +83,8 @@ class ReportFragment : Fragment() {
     }
 
     private fun getGeoPosition() {
-        TODO("Not yet implemented")
+        val intent = Intent(activity, MapActivity::class.java)
+        startActivityForResult(intent, REQUEST_GEO_POSITION)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -110,6 +115,15 @@ class ReportFragment : Fragment() {
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
+                }
+            }
+            REQUEST_GEO_POSITION -> if (resultCode == RESULT_OK && data != null) {
+                latitude = data.getDoubleExtra("latitude", 0.0)
+                longitude = data.getDoubleExtra("longitude", 0.0)
+                tvCoords.text = "Координаты: широта - " + String.format("%.3f", latitude).toString() + ", долгота -  " + String.format("%.3f", longitude).toString()
+                isGeoPositionExist = true
+                if (isPhotoExist) {
+                    btnSend.isEnabled = true
                 }
             }
             else -> super.onActivityResult(requestCode, resultCode, data)

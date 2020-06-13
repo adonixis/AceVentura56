@@ -7,20 +7,6 @@
     tools:context=".fragment.ReportFragment"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/ivPet"
         android:layout_width="0dp"
@@ -35,6 +21,23 @@
         android:background="@color/yellow"
         />
 
+    <TextView
+        android:id="@+id/tvCoords"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPet"
+        app:layout_constraintStart_toStartOf="@+id/ivPet"
+        app:layout_constraintEnd_toEndOf="@+id/ivPet"
+        android:layout_margin="8dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/indigo"
+        android:textSize="16sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        tools:text="Кординаты:"
+        />
+
     <ImageView
         android:id="@+id/ivCamera"
         android:layout_width="0dp"
@@ -43,6 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivGallery"
         app:layout_constraintHorizontal_chainStyle="spread"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_photo_camera"
@@ -77,6 +81,7 @@
         app:layout_constraintStart_toEndOf="@+id/ivCamera"
         app:layout_constraintEnd_toStartOf="@+id/ivGeoPosition"
         app:layout_constraintHorizontal_chainStyle="spread"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_insert_photo"
@@ -111,6 +116,7 @@
         app:layout_constraintStart_toEndOf="@+id/ivGallery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_geo_position"

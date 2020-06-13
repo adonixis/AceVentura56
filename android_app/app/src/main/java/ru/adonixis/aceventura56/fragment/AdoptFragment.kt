@@ -22,7 +22,7 @@ class AdoptFragment : Fragment() {
     ): View? {
         adoptViewModel =
             ViewModelProvider(this).get(AdoptViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment__adopt, container, false)
+        val root = inflater.inflate(R.layout.fragment_adopt, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         adoptViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
